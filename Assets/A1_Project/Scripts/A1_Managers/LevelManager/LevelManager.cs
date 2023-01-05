@@ -17,9 +17,10 @@
         instance = this;
     }
 
-    public override void GameStartProcess()
+    public override void LevelInstantiateProcess()
     {
         levelCreateOfficer.CreateLevelProcess();
     }
+
 
 }

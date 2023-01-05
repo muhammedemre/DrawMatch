@@ -15,7 +15,7 @@ public class LevelPreparationOfficer : MonoBehaviour
     void PrepareTheLevel()
     {
 
-
+        AssignTheLevelImages(levelActor.levelIndex);
         StartCoroutine(LevelIsReadyDelay());
     }
 
@@ -23,5 +23,12 @@ public class LevelPreparationOfficer : MonoBehaviour
     {
         yield return new WaitForSeconds(afterReadyDelay);
         GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.PostLevelInstantiate);
+    }
+
+    void AssignTheLevelImages(int levelIndex)
+    {      
+        string spritePath = "LevelSprites/" + "LEVEL-" + levelIndex.ToString();
+        Sprite levelSprite = Resources.Load<Sprite>(spritePath);
+        levelActor.levelQuestionImage.sprite = levelSprite;
     }
 }

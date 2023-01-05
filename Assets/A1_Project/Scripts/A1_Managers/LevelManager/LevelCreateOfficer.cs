@@ -7,7 +7,7 @@ public class LevelCreateOfficer : MonoBehaviour
     [SerializeField] private GameObject levelContainer;
     public GameObject currentLevel;
 
-    int levelCounter = 0;
+    int levelCounter = 1;
 
     public void CreateLevelProcess()
     {
@@ -19,6 +19,7 @@ public class LevelCreateOfficer : MonoBehaviour
     public void CreateTheLevel(GameObject levelPrefab)
     {
         GameObject tempLevel = Instantiate(levelPrefab, levelContainer.transform.position, Quaternion.identity, levelContainer.transform);
+        tempLevel.GetComponent<LevelActor>().levelIndex = levelCounter;
         currentLevel = tempLevel;
         //currentLevel.transform.eulerAngles = new Vector3(0f, 180f, 0f);
         GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.PostGameStart);
