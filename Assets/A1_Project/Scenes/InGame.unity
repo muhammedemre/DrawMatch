@@ -312,7 +312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &102397906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -367,6 +367,7 @@ GameObject:
   - component: {fileID: 247265730}
   - component: {fileID: 247265729}
   - component: {fileID: 247265728}
+  - component: {fileID: 247265731}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -403,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelContainer: {fileID: 1629020427}
   currentLevel: {fileID: 0}
+  levelCounter: 1
 --- !u!114 &247265729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +429,8 @@ MonoBehaviour:
   observerOfficer: {fileID: 247265730}
   subscribeList: 05000000
   levelCreateOfficer: {fileID: 247265728}
+  levelMoveOfficer: {fileID: 247265731}
+  levelAmount: 50
 --- !u!114 &247265730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,6 +441,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65edf1ce2d87748a78857fb23380803e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &247265731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247265725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff57d0f059647804b829c0828aeefec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &279307228
@@ -551,11 +567,11 @@ RectTransform:
   m_Father: {fileID: 1975191840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &321466505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +615,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 321466506}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1111654874}
+        m_TargetAssemblyTypeName: UITaskOfficers, Assembly-CSharp
+        m_MethodName: AdminCheatNextLevel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &321466506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,7 +724,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '>'
+  m_text: <
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -789,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &612914218
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1696,11 +1724,11 @@ RectTransform:
   m_Father: {fileID: 1975191840}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 150, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1468603385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1744,7 +1772,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1468603386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1111654874}
+        m_TargetAssemblyTypeName: UITaskOfficers, Assembly-CSharp
+        m_MethodName: AdminCheatNextLevel
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1468603386
 MonoBehaviour:
   m_ObjectHideFlags: 0

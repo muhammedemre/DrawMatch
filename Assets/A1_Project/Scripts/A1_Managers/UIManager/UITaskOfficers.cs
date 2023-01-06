@@ -20,4 +20,16 @@ public class UITaskOfficers : MonoBehaviour
     {
         UIManager.instance.uICanvasOfficer.settingsActor.PlayClose();
     }
+
+    public void AdminCheatNextLevel(bool next) 
+    {
+        if (next)
+        {
+            LevelManager.instance.levelMoveOfficer.GoNextLevel();
+        }
+        else
+        {
+            LevelManager.instance.levelMoveOfficer.GoPreviousLevel();
+        }
+    }
 }

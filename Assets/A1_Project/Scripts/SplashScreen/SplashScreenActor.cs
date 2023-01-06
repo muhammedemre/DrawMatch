@@ -11,13 +11,11 @@ public class SplashScreenActor : MonoBehaviour
 
     public void SplashProcess(float splashScreenDuration, UnityAction onComplete) 
     {
-        print("DisplaySplashScreen2");
         LoadingBarStart(splashScreenDuration, onComplete);
     }
 
     void LoadingBarStart(float duration, UnityAction onComplete)
     {
-        print("DisplaySplashScreen3");
         loadingBarFill.fillAmount = 0f;
         DOTween.To(x =>
         {

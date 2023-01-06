@@ -12,7 +12,6 @@ public class UICanvasOfficer : MonoBehaviour
 
     public void DisplaySplashScreen() 
     {
-        print("DisplaySplashScreen1");
         splashScreenActor.SplashProcess(splashScreenDuration, () => AfterSplashScreenProcess());
     }
 
