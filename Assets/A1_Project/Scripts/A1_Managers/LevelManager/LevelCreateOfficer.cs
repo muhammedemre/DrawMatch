@@ -25,5 +25,6 @@ public class LevelCreateOfficer : MonoBehaviour
         GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.PostGameStart);
 
         GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.PreLevelInstantiate); // Can be arranged according to PostGameStart;
+        UIManager.instance.uICanvasOfficer.MidButtonHandle(true);
     }
 }

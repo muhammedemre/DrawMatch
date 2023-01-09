@@ -32,4 +32,25 @@ public class UITaskOfficers : MonoBehaviour
             LevelManager.instance.levelMoveOfficer.GoPreviousLevel();
         }
     }
+
+    public void NextButton() 
+    {
+        LevelManager.instance.levelMoveOfficer.GoNextLevel();
+        UIManager.instance.uICanvasOfficer.nextButton.SetActive(false);
+    }
+
+    public void BGmusicStateChange() 
+    {
+        AudioManager.instance.ChangeMusicState();
+    }
+    public void SFXStateChange() 
+    {
+        AudioManager.instance.ChangeSFXState();
+    }
+
+    public void HintButton() 
+    {
+        // Once reklam oynatilacak ve oradan tetiklenecek;
+        LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().RevealTheHint();
+    }
 }

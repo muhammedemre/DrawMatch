@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelPreparationOfficer : MonoBehaviour
 {
     [SerializeField] LevelActor levelActor;
     [SerializeField] float afterReadyDelay;
+    [SerializeField] TextMeshProUGUI levelText;
 
     private void Start()
     {
@@ -14,8 +16,8 @@ public class LevelPreparationOfficer : MonoBehaviour
 
     void PrepareTheLevel()
     {
-
         AssignTheLevelImages(levelActor.levelIndex);
+        AssignTheLevel();
         StartCoroutine(LevelIsReadyDelay());
     }
 
@@ -30,5 +32,10 @@ public class LevelPreparationOfficer : MonoBehaviour
         string spritePath = "LevelSprites/" + "LEVEL-" + levelIndex.ToString();
         Sprite levelSprite = Resources.Load<Sprite>(spritePath);
         levelActor.levelQuestionImage.sprite = levelSprite;
+    }
+
+    void AssignTheLevel() 
+    {
+        levelText.text = "Level "+levelActor.levelIndex.ToString();
     }
 }

@@ -37,11 +37,14 @@ namespace GestureRecognizer {
 
 		public bool fixedArea = false;
 
-		GestureData data = new GestureData();
+		public GestureData data = new GestureData();
 
 		[System.Serializable]
 		public class ResultEvent : UnityEvent<RecognitionResult> {}
 		public ResultEvent OnRecognize;
+
+		[SerializeField] bool isFakeDrawDetector = false;
+		[SerializeField] DrawDetector relatedDrawDetector;
 
 		RectTransform rectTransform;
 
@@ -101,15 +104,25 @@ namespace GestureRecognizer {
 			if (data.lines.Count >= maxLines) {
 				switch (removeStrategy) {
 				case RemoveStrategy.RemoveOld:
-					data.lines.RemoveAt (0);
+					data.lines.RemoveAt(0);                
 					break;
 				case RemoveStrategy.ClearAll:
-					data.lines.Clear ();
+					data.lines.Clear ();					
 					break;
 				}
 			}
 
+
+			if (relatedDrawDetector.data.lines.Count > 0)
+			{
+				relatedDrawDetector.data.lines.RemoveAt(0);
+				relatedDrawDetector.data.lines.Clear();
+			}
+			relatedDrawDetector.line.Points = new Vector2[0];
+			relatedDrawDetector.UpdateLines();
+
 			data.lines.Add (new GestureLine ());
+			
 
 			var fixedPos = FixedPosition (eventData.position);
 			if (data.LastLine.points.Count == 0 || data.LastLine.points.Last () != fixedPos) {
@@ -128,11 +141,14 @@ namespace GestureRecognizer {
 
 		public void OnEndDrag (PointerEventData eventData)
 		{
+			if (isFakeDrawDetector)
+			{
+				return;
+			}
 			StartCoroutine (OnEndDragCoroutine (eventData));
 		}
 
-		IEnumerator OnEndDragCoroutine(PointerEventData eventData){
-
+		IEnumerator OnEndDragCoroutine(PointerEventData eventData){           
 			data.LastLine.points.Add (FixedPosition(eventData.position));
 			UpdateLines ();
 
@@ -168,6 +184,7 @@ namespace GestureRecognizer {
 
 				if (result.gesture != null && result.score.score >= scoreToAccept) {
 					OnRecognize.Invoke (result);
+					LetTheLevelKnowAboutTheSuccess();
 					if (clearNotRecognizedLines) {
 						data = sizedData;
 						UpdateLines ();
@@ -179,6 +196,11 @@ namespace GestureRecognizer {
 			}
 
 			yield return null;
+		}
+
+		void LetTheLevelKnowAboutTheSuccess() 
+		{
+			LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().LevelIsSuccessfullyCompleted();
 		}
 
 	}

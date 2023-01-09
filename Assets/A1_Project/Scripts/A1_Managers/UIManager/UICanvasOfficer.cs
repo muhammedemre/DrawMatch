@@ -6,8 +6,9 @@ public class UICanvasOfficer : MonoBehaviour
 {
     public SplashScreenActor splashScreenActor;
     public SettingsActor settingsActor;
-    public GameObject inGameScreen;
+    public GameObject inGameScreen, nextButton, hintButton, bgMusicButton, soundButton;
     [SerializeField] float splashScreenDuration;
+    public List<ParticleSystem> confettieList = new List<ParticleSystem>();
 
 
     public void DisplaySplashScreen() 
@@ -18,6 +19,7 @@ public class UICanvasOfficer : MonoBehaviour
     void AfterSplashScreenProcess() 
     {
         ActivateInGameScreen();
+        MidButtonHandle(true);
         GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.LevelInstantiate);
 
     }
@@ -26,5 +28,11 @@ public class UICanvasOfficer : MonoBehaviour
     {
         splashScreenActor.gameObject.SetActive(false);
         inGameScreen.SetActive(true);
+    }
+
+    public void MidButtonHandle(bool hint) // next or Hint button
+    {
+        hintButton.SetActive(hint);
+        nextButton.SetActive(!hint);
     }
 }
