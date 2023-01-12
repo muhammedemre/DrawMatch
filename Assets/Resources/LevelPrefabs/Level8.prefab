@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530608081462430448, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: patterns.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3530608081462430448, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: patterns.Array.data[0]

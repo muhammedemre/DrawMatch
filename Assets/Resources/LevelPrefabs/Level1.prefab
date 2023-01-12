@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3086568935766254035, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 60a33f72e0252dc468e4280f1f2d4792, type: 3}
     - target: {fileID: 3153893506925369453, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -121,7 +125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3530608081462430448, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: patterns.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3530608081462430448, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: patterns.Array.data[0]
@@ -131,6 +135,10 @@ PrefabInstance:
       propertyPath: patterns.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: ed8b30beb39fd0143b939c379bdc4549, type: 2}
+    - target: {fileID: 3530608081462430448, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
+      propertyPath: patterns.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e12c9cd007ea2649996dd32aaaabd6f, type: 2}
     - target: {fileID: 4175771180425821501, guid: e29e4d05186b47f4e9daa5ea39a88494, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -263
