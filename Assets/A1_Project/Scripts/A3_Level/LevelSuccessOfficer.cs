@@ -34,6 +34,7 @@ public class LevelSuccessOfficer : MonoBehaviour
         string spritePath = "LevelSprites/" + "LEVEL-" + levelActor.levelIndex.ToString()+"-TRUE";
         Sprite levelSprite = Resources.Load<Sprite>(spritePath);
         levelActor.levelQuestionImage.gameObject.SetActive(false);
+        levelActor.levelHintImage.gameObject.SetActive(false);
         levelActor.levelSolvedImage.sprite = levelSprite;
         levelActor.levelSolvedImage.gameObject.SetActive(true);
         //levelActor.levelSolvedImage.GetComponent<Animator>().enabled = true;
