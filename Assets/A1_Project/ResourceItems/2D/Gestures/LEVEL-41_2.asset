@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce0fdb4e39b5744abf0c061bd2a3e30, type: 3}
+  m_Name: LEVEL-41_2
+  m_EditorClassIdentifier: 
+  id: LEVEL-1
+  points: []
+  gesture:
+    lines:
+    - points:
+      - {x: 0.5058043, y: 0.7529022}
+      - {x: 0.37645108, y: 0.74792707}
+      - {x: 0.30679932, y: 0.7131012}
+      - {x: 0.23714758, y: 0.66335}
+      - {x: 0.18242124, y: 0.583748}
+      - {x: 0.16749586, y: 0.47429526}
+      - {x: 0.16749586, y: 0.3499171}
+      - {x: 0.23714758, y: 0.19568825}
+      - {x: 0.32669982, y: 0.1359868}
+      - {x: 0.4610282, y: 0.106136024}
+      - {x: 0.6152571, y: 0.08126044}
+      - {x: 0.7247098, y: 0.0961858}
+      - {x: 0.81426203, y: 0.12603652}
+      - {x: 0.8839138, y: 0.22056389}
+      - {x: 0.9038143, y: 0.31509125}
+      - {x: 0.9187397, y: 0.43449426}
+      - {x: 0.9087894, y: 0.543947}
+      - {x: 0.87396353, y: 0.63847435}
+      - {x: 0.7844113, y: 0.7230514}
+      - {x: 0.6849088, y: 0.7529022}
+      - {x: 0.59038144, y: 0.76285243}
+      closedLine: 1
+  useLinesOrder: 0
+  useLinesDirections: 0

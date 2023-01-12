@@ -11,11 +11,16 @@ public class LevelActor : MonoBehaviour
     public LevelSuccessOfficer levelSuccessOfficer;
     public Image levelQuestionImage, levelSolvedImage, levelHintImage;
     public int levelIndex;
-    public GameObject drawArea, fakeDrawArea, successCheck;
+    public GameObject drawArea, successCheck;
 
     public void LevelIsSuccessfullyCompleted() 
     {
-        levelSuccessOfficer.LevelSuccessProcess();     
+        levelSuccessOfficer.LevelSuccessProcess();
+    }
+
+    public void LevelCompleteTryIsFailed()
+    {
+        levelSuccessOfficer.LevelFailProcess();
     }
 
     public void RevealTheHint()

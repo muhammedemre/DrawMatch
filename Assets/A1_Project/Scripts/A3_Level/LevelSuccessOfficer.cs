@@ -8,12 +8,17 @@ public class LevelSuccessOfficer : MonoBehaviour
     public void LevelSuccessProcess() 
     {
         levelActor.drawArea.SetActive(false);
-        levelActor.fakeDrawArea.SetActive(false);
         levelActor.successCheck.SetActive(true);
         ShootConfetties();
         UIManager.instance.uICanvasOfficer.MidButtonHandle(false);
         DisplaySuccessImage();
         AudioManager.instance.PlayASound("success");
+        VibrationManager.instance.Vibrate(true);
+    }
+
+    public void LevelFailProcess()
+    {
+        VibrationManager.instance.Vibrate(false);
     }
 
     void ShootConfetties()
@@ -28,6 +33,9 @@ public class LevelSuccessOfficer : MonoBehaviour
     {
         string spritePath = "LevelSprites/" + "LEVEL-" + levelActor.levelIndex.ToString()+"-TRUE";
         Sprite levelSprite = Resources.Load<Sprite>(spritePath);
-        levelActor.levelQuestionImage.sprite = levelSprite;
+        levelActor.levelQuestionImage.gameObject.SetActive(false);
+        levelActor.levelSolvedImage.sprite = levelSprite;
+        levelActor.levelSolvedImage.gameObject.SetActive(true);
+        //levelActor.levelSolvedImage.GetComponent<Animator>().enabled = true;
     }
 }

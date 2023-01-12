@@ -43,10 +43,10 @@ namespace GestureRecognizer {
 		public class ResultEvent : UnityEvent<RecognitionResult> {}
 		public ResultEvent OnRecognize;
 
-		[SerializeField] bool isFakeDrawDetector = false;
-		[SerializeField] DrawDetector relatedDrawDetector;
-
 		RectTransform rectTransform;
+
+		[SerializeField] Transform targetPivotContainer, pivotPrefab;
+		[SerializeField] float acceptedDistanceTreshold;
 
 
 		void Start(){
@@ -112,15 +112,6 @@ namespace GestureRecognizer {
 				}
 			}
 
-
-			if (relatedDrawDetector.data.lines.Count > 0)
-			{
-				relatedDrawDetector.data.lines.RemoveAt(0);
-				relatedDrawDetector.data.lines.Clear();
-			}
-			relatedDrawDetector.line.Points = new Vector2[0];
-			relatedDrawDetector.UpdateLines();
-
 			data.lines.Add (new GestureLine ());
 			
 
@@ -141,10 +132,11 @@ namespace GestureRecognizer {
 
 		public void OnEndDrag (PointerEventData eventData)
 		{
-			if (isFakeDrawDetector)
-			{
+            if (!EnoughCloseToTargetPivotPoint())
+            {
+				LetTheLevelKnowAboutTheFailure();
 				return;
-			}
+            }
 			StartCoroutine (OnEndDragCoroutine (eventData));
 		}
 
@@ -190,8 +182,9 @@ namespace GestureRecognizer {
 						UpdateLines ();
 					}
 					break;
-				} else {
+				} else {					
 					OnRecognize.Invoke (RecognitionResult.Empty);
+					LetTheLevelKnowAboutTheFailure();
 				}
 			}
 
@@ -203,6 +196,39 @@ namespace GestureRecognizer {
 			LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().LevelIsSuccessfullyCompleted();
 		}
 
-	}
+		void LetTheLevelKnowAboutTheFailure() 
+		{
+			LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().LevelCompleteTryIsFailed();
+		}
+
+		bool EnoughCloseToTargetPivotPoint() 
+		{
+            foreach (Transform targetPivotPoint in targetPivotContainer)
+            {
+				print("PIVOT DISTANCE : " + Vector2.Distance(CalculateThePivotOfTheDraw(), targetPivotPoint.GetComponent<RectTransform>().position));
+				if (Vector2.Distance(CalculateThePivotOfTheDraw(), targetPivotPoint.GetComponent<RectTransform>().position) < acceptedDistanceTreshold)
+				{					
+					return true;
+				}
+			}
+			return false;
+		}
+
+		Vector2 CalculateThePivotOfTheDraw() 
+		{
+			Vector2 tempPivot = Vector2.zero;
+			foreach (Vector2 point in line.Points)
+            {
+				tempPivot += point;
+			}
+			tempPivot /= line.Points.Length;
+			Transform tempPivotObject = Instantiate(pivotPrefab, transform);
+			Vector2 normalizedTempPivot = new Vector2(tempPivot.x * Screen.width, tempPivot.y * Screen.height);
+			tempPivotObject.GetComponent<RectTransform>().position = normalizedTempPivot;
+			return tempPivotObject.GetComponent<RectTransform>().position;
+            //Vector2 pivot = new Vector2((tempPivot.x / line.Points.Length), (tempPivot.y / line.Points.Length));
+        }
+
+    }
 
 }

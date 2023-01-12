@@ -25,9 +25,15 @@ public class DataSaveAndLoadOfficer : MonoBehaviour
         GameData gameData = new GameData();
         gameData.loaded = true;
 
-        if (Time.time > 5f) // need to be sure game is not saved before its loaded - will be changed with splashScreenDuration
+        if (Time.time > UIManager.instance.uICanvasOfficer.splashScreenDuration) // need to be sure game is not saved before its loaded - will be changed with splashScreenDuration
         {
             ES3.Save("gameData", gameData);
+            ES3.Save("musicState", AudioManager.instance.bGmusicState);
+            ES3.Save("sfxState", AudioManager.instance.soundFXState);
+            ES3.Save("vibrationState", VibrationManager.instance.ableToVibrate);
+            ES3.Save("reachedLevel", LevelManager.instance.levelCreateOfficer.LevelCounter);
+
+            print("Data saved");
         }
     }
 
@@ -39,6 +45,12 @@ public class DataSaveAndLoadOfficer : MonoBehaviour
             GameData gameData = ES3.Load("gameData", new GameData());
             if (gameData.loaded)
             {
+
+                AudioManager.instance.DataLoadProcess(ES3.Load("musicState", true), ES3.Load("sfxState", true));
+                VibrationManager.instance.DataLoadProcess(ES3.Load("vibrationState", true));
+
+                LevelManager.instance.levelCreateOfficer.LevelCounter = ES3.Load("reachedLevel", 1);
+
                 Debug.Log("Data successfuly Loaded");
                 GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.GameStart);
             }
@@ -62,7 +74,7 @@ public class DataSaveAndLoadOfficer : MonoBehaviour
 
     public void RefreshTheData()
     {
-        List<string> keyList = new List<string>() { }; //{ "playerCapacityLevel", "playerSpeedLevel", "playerMoney", "tutorialFinished", "activeRoomsData", "musicGame", "soundGame", "vibrationGame"};
+        List<string> keyList = new List<string>() { "musicState", "sfxState", "vibrationState", "reachedLevel" }; //{ };
         foreach (string key in keyList)
         {
             ES3.DeleteKey(key);
@@ -71,7 +83,7 @@ public class DataSaveAndLoadOfficer : MonoBehaviour
     }
     public void DisplayTheData()
     {
-        List<string> keyList = new List<string>() { }; //{ "playerCapacityLevel", "playerSpeedLevel", "playerMoney", "tutorialFinished", "activeRoomsData", "musicGame", "soundGame", "vibrationGame" };
+        List<string> keyList = new List<string>() { "musicState", "sfxState", "vibrationState", "reachedLevel" }; //{ };
         foreach (string key in keyList)
         {
             print(key+ " : " + ES3.Load(key)) ;

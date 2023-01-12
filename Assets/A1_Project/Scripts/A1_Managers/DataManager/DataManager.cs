@@ -24,7 +24,6 @@ public class DataManager : Manager
     public override void PreGameStartProcess()
     {
         DataSaveAndLoadOfficer.LoadTheData();
-        //GameManager.instance.gameManagerObserverOfficer.Publish(ObserverSubjects.GameStart);
     }
 
     private void OnApplicationFocus(bool focus)

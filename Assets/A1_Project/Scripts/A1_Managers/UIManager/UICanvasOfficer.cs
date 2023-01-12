@@ -6,8 +6,8 @@ public class UICanvasOfficer : MonoBehaviour
 {
     public SplashScreenActor splashScreenActor;
     public SettingsActor settingsActor;
-    public GameObject inGameScreen, nextButton, hintButton, bgMusicButton, soundButton;
-    [SerializeField] float splashScreenDuration;
+    public GameObject inGameScreen, nextButton, hintButton, bgMusicButton, soundButton, vibrationButton;
+    public float splashScreenDuration;
     public List<ParticleSystem> confettieList = new List<ParticleSystem>();
 
 

@@ -8,7 +8,7 @@ public class AudioManager : Manager
     public static AudioManager instance;
     [SerializeField] AudioClip backgroundMusic;
 
-    [SerializeField] bool bGmusicState = true, soundFXState = true;
+    public bool bGmusicState = true, soundFXState = true;
     [SerializeField] List<Sprite> bgMusicButtonSprites = new List<Sprite>();
     [SerializeField] List<Sprite> sfxButtonSprites = new List<Sprite>();
     [SerializeField] AudioSource bgMusicAudioSource;
@@ -94,5 +94,14 @@ public class AudioManager : Manager
         AudioSource audioSource = soundObject.AddComponent<AudioSource>();
         AudioSourceActor audioSourceActor = soundObject.AddComponent<AudioSourceActor>();
         audioSourceActor.PrepareTheAudioSource(audioSource, clip);
+    }
+
+    public void DataLoadProcess(bool musicState, bool sfxState) 
+    {
+        bGmusicState = musicState;
+        MusicState();
+
+        soundFXState = sfxState;
+        SFXState();
     }
 }

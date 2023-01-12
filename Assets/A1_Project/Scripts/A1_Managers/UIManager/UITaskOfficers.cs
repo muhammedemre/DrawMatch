@@ -42,15 +42,23 @@ public class UITaskOfficers : MonoBehaviour
     public void BGmusicStateChange() 
     {
         AudioManager.instance.ChangeMusicState();
+        DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
     }
     public void SFXStateChange() 
     {
         AudioManager.instance.ChangeSFXState();
+        DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
     }
 
     public void HintButton() 
     {
         // Once reklam oynatilacak ve oradan tetiklenecek;
         LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().RevealTheHint();
+    }
+
+    public void VibrationButton()
+    {
+        VibrationManager.instance.ChangeVibrationState();
+        DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
     }
 }
