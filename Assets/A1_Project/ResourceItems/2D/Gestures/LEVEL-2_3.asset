@@ -10,18 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ce0fdb4e39b5744abf0c061bd2a3e30, type: 3}
-  m_Name: LEVEL-8_2
+  m_Name: LEVEL-2_3
   m_EditorClassIdentifier: 
   id: LEVEL-1
   points: []
   gesture:
     lines:
     - points:
-      - {x: 0.27197346, y: 0.33499175}
-      - {x: 0.79436153, y: 0.27529025}
-      - {x: 0.8043118, y: 0.6036485}
-      - {x: 0.28689882, y: 0.6733002}
-      - {x: 0.27197346, y: 0.38971812}
-      closedLine: 1
+      - {x: 0.25704807, y: 0.6832504}
+      - {x: 0.5754561, y: 0.27031517}
+      closedLine: 0
   useLinesOrder: 0
   useLinesDirections: 0
