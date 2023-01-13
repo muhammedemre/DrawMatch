@@ -15,13 +15,7 @@ public class FaceBookSDKManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
 
         Application.targetFrameRate = 60;
-        //if (Application.platform == RuntimePlatform.IPhonePlayer)
-        //{
-        //    Application.targetFrameRate = 60;
-        //}
-
         FB.Init(FBInitCallback);
-        //GameAnalytics.Initialize();
     }
 
     private void FBInitCallback()

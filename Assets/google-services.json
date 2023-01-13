@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "405082630423",
+    "project_id": "drawing-rush",
+    "storage_bucket": "drawing-rush.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405082630423:android:b4483baa672d5f77ba6f52",
+        "android_client_info": {
+          "package_name": "com.Splash.DrawingRush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405082630423-khajve1qnffnenupmn7n1t2fkrf2gj88.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmOjgsQo9Oo5xjjjBMquBWhpS0YT3HiOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405082630423-khajve1qnffnenupmn7n1t2fkrf2gj88.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
