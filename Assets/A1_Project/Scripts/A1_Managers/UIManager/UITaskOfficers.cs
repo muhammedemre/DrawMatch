@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
 
 public class UITaskOfficers : MonoBehaviour
 {
@@ -43,22 +44,28 @@ public class UITaskOfficers : MonoBehaviour
     {
         AudioManager.instance.ChangeMusicState();
         DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
+        GameAnalytics.NewDesignEvent("bg_music_state_" + AudioManager.instance.bGmusicState.ToString());
     }
     public void SFXStateChange() 
     {
         AudioManager.instance.ChangeSFXState();
         DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
+        GameAnalytics.NewDesignEvent("sfx_state_" + AudioManager.instance.soundFXState.ToString());
     }
 
     public void HintButton() 
     {
         // Once reklam oynatilacak ve oradan tetiklenecek;
         LevelManager.instance.levelCreateOfficer.currentLevel.GetComponent<LevelActor>().RevealTheHint();
+        GameAnalytics.NewDesignEvent("hint_requested");
+
     }
 
     public void VibrationButton()
     {
         VibrationManager.instance.ChangeVibrationState();
         DataManager.instance.DataSaveAndLoadOfficer.SaveTheData();
+        GameAnalytics.NewDesignEvent("vibration_state_" + VibrationManager.instance.ableToVibrate.ToString());
+
     }
 }

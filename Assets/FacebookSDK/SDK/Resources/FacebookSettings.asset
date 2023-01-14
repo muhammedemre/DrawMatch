@@ -24,7 +24,7 @@ MonoBehaviour:
   status: 1
   xfbml: 0
   frictionlessRequests: 1
-  androidKeystorePath: C:\C_Emre\UnityProjects\Gitberry\SplashDrawMatch\keystore\user.keystore
+  androidKeystorePath: /Users/tbyoran/Work/splash/game/SplashDrawMatch/keystore/user.keystore
   iosURLSuffix: 
   appLinkSchemes:
   - list: []

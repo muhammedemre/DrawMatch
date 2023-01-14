@@ -7,22 +7,24 @@ using UnityEngine;
 
 public class FirebaseSDKManager : MonoBehaviour
 {
-    //public static bool isInitialized = false;
-    //public static UnityEvent OnInitialized = new UnityEvent();
-    //private void Awake()
-    //{
-    //    if (FindObjectsOfType<FirebaseSDKManager>().Length > 1)
-    //    {
-    //        Destroy(gameObject);
-    //        return;
-    //    }
-    //    DontDestroyOnLoad(gameObject);
+    public static bool isInitialized = false;
+    public static UnityEvent OnInitialized = new UnityEvent();
 
-    //    FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
-    //    {
-    //        var app = FirebaseApp.DefaultInstance;
-    //        isInitialized = true;
-    //        OnInitialized?.Invoke();
-    //    });
-    //}
+    private void Awake()
+    {
+        if (FindObjectsOfType<FirebaseSDKManager>().Length > 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        //FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
+        //{
+        //    var app = FirebaseApp.DefaultInstance;
+        //    isInitialized = true;
+        //    OnInitialized?.Invoke();
+        //});
+    }
 }
