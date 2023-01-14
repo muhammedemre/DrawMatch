@@ -17,6 +17,11 @@ public class LevelActor : MonoBehaviour
     void Start()
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "level_" + levelIndex.ToString());
+
+        if (levelIndex > 0 && levelIndex % 5 == 0)
+        {
+            AdMobManager.instance.ShowAd(AdMobManager.InterstitialAdType.Level);
+        }
     }
 
     public void LevelIsSuccessfullyCompleted() 
@@ -33,10 +38,12 @@ public class LevelActor : MonoBehaviour
 
     public void RevealTheHint()
     {
-        levelHintImage.gameObject.SetActive(true);
-        string spritePath = "LevelHintSprites/" + "LEVEL-" + levelIndex.ToString()+"-HINT";
-        Sprite levelHintSprite = Resources.Load<Sprite>(spritePath);
-        levelHintImage.sprite = levelHintSprite;
+        AdMobManager.instance.ShowRewardedAd(AdMobManager.RewardedInterstitialAdType.Hint, () => {
+            levelHintImage.gameObject.SetActive(true);
+            string spritePath = "LevelHintSprites/" + "LEVEL-" + levelIndex.ToString()+"-HINT";
+            Sprite levelHintSprite = Resources.Load<Sprite>(spritePath);
+            levelHintImage.sprite = levelHintSprite;
+        });
     }
-    
+
 }

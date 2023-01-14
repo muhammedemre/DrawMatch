@@ -36,6 +36,7 @@ MonoBehaviour:
     - Coffee.UIParticle
     - Coffee.UIParticle.Demo
     - Coffee.UIParticle.Editor
+    - GoogleMobileAds.Editor
     - Lofelt.NiceVibrations
     - Lofelt.NiceVibrations.Demo
     - Lofelt.NiceVibrations.Editor
