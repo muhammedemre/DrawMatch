@@ -57,7 +57,10 @@ public class AdMobManager : MonoBehaviour
 
         RequestConfiguration requestConfiguration =
             new RequestConfiguration.Builder()
-            .SetSameAppKeyEnabled(true).build();
+            .SetMaxAdContentRating(MaxAdContentRating.G)
+            .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.True)
+            .SetSameAppKeyEnabled(true)
+            .build();
         MobileAds.SetRequestConfiguration(requestConfiguration);
 
         MobileAds.Initialize(initStatus => {
